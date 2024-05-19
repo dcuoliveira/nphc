@@ -1,4 +1,4 @@
-from numba import autojit, jit, double, int32, int64, float64
+from numba import double, int32, int64, float64 # autojit, jit, 
 from scipy.linalg import inv, pinv, eigh
 from joblib import Parallel, delayed
 from math import sqrt, pi, exp
@@ -232,7 +232,7 @@ class Cumulants(object):
 ## Empirical cumulants with formula from the paper
 ###########
 
-@autojit
+# @autojit
 def get_K_c(E_c):
     K_c = np.zeros_like(E_c[:, :, 0])
     K_c += 2 * E_c[:, :, 0]
