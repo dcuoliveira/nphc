@@ -245,17 +245,17 @@ def get_K_c(E_c):
 ## Theoretical cumulants L, C, K, K_c
 ##########
 
-@autojit
+# @autojit
 def get_L_th(mu, R):
     return np.dot(R, mu)
 
 
-@autojit
+# @autojit
 def get_C_th(L, R):
     return np.dot(R, np.dot(np.diag(L), R.T))
 
 
-@autojit
+# @autojit
 def get_K_c_th(L, C, R):
     d = len(L)
     if R.shape[0] == d ** 2:
@@ -284,7 +284,7 @@ def get_K_c_th(L, C, R):
 
 # @jit(double(double[:],double[:],int32,int32,double,double,double), nogil=True, nopython=True)
 # @jit(float64(float64[:],float64[:],int64,int64,int64,float64,float64), nogil=True, nopython=True)
-@autojit
+# @autojit
 def A_ij_rect(realization_i, realization_j, a, b, T, L_j):
     """
     Computes the mean centered number of jumps of N^j between \tau + a and \tau + b, that is
@@ -319,7 +319,7 @@ def A_ij_rect(realization_i, realization_j, a, b, T, L_j):
     return res
 
 
-@autojit
+# @autojit
 def A_ij_gauss(realization_i, realization_j, a, b, T, L_j, sigma=1.0):
     """
     Computes the mean centered number of jumps of N^j between \tau + a and \tau + b, that is
@@ -354,7 +354,7 @@ def A_ij_gauss(realization_i, realization_j, a, b, T, L_j, sigma=1.0):
     res /= T
     return res
 
-@autojit
+# @autojit
 def E_ijk_rect(realization_i, realization_j, realization_k, a, b, T, L_i, L_j, J_ij, sigma=1.0):
     """
     Computes the mean of the centered product of i's and j's jumps between \tau + a and \tau + b, that is
@@ -410,7 +410,7 @@ def E_ijk_rect(realization_i, realization_j, realization_k, a, b, T, L_i, L_j, J
     return res
 
 
-@autojit
+# @autojit
 def E_ijk_gauss(realization_i, realization_j, realization_k, a, b, T, L_i, L_j, J_ij, sigma=1.0):
     """
     Computes the mean of the centered product of i's and j's jumps between \tau + a and \tau + b, that is
@@ -506,7 +506,7 @@ def E_ijk_gauss(realization_i, realization_j, realization_k, a, b, T, L_i, L_j, 
     # return res
 
 
-@autojit
+# @autojit
 def A_and_I_ij_rect(realization_i, realization_j, half_width, T, L_j, sigma=1.0):
     """
     Computes the integral \int_{(0,H)} t c^{ij} (t) dt. This integral equals
@@ -562,7 +562,7 @@ def A_and_I_ij_rect(realization_i, realization_j, half_width, T, L_j, sigma=1.0)
     return res_C + res_J * 1j
 
 
-@autojit
+# @autojit
 def A_and_I_ij_gauss(realization_i, realization_j, half_width, T, L_j, sigma=1.0):
     """
     Computes the integral \int_{(0,H)} t c^{ij} (t) dt. This integral equals
