@@ -153,8 +153,8 @@ class NPHC(object):
         cost =  (1-self.alpha) * tf.reduce_mean( tf.squared_difference( activation_3, K_c ) ) \
         + self.alpha * tf.reduce_mean( tf.squared_difference( activation_2, C ) )
 
-        reg_l1 = tf.contrib.layers.l1_regularizer(self.l_l1)
-        reg_l2 = tf.contrib.layers.l2_regularizer(self.l_l2)
+        reg_l1 = tf.keras.regularizers.l1(self.l_l1)
+        reg_l2 = tf.keras.regularizers.l2(self.l_l2)
 
         if (self.l_l2 * self.l_l1 > 0):
             cost = tf.cast(cost, tf.float64) + reg_l1((I - tf.matrix_inverse(R))) + reg_l2((I - tf.matrix_inverse(R)))
