@@ -5,6 +5,8 @@ from itertools import product
 import tensorflow as tf
 import numpy as np
 
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 def starting_point(cumulants_list,random=False):
     L_list, C_list, K_c_list = cumulants_list
